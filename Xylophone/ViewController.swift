@@ -19,7 +19,15 @@ class ViewController: UIViewController {
 
     
     @IBAction func onPressed(_ sender: UIButton) {
+        sender.alpha = 0.5
+        
         playSound(soundName: sender.currentTitle);
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2 ) {
+            UIView.animate(withDuration: 0.3) {
+                sender.alpha = 1.0
+            }
+        }
     }
     
     func playSound(soundName: String?) -> Void{
